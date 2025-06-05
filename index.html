@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalPro Academy - Premier Digital Marketing Agency & Training</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Thiki Tech Academy - Digital Marketing Excellence</title>
     <style>
         * {
             margin: 0;
@@ -16,1018 +15,604 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .hero-text p {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            animation: slideInLeft 1s ease-out 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: slideInLeft 1s ease-out 0.4s both;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        .hero-visual {
-            position: relative;
-            animation: slideInRight 1s ease-out;
-        }
-
-        .hero-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .hero-card i {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .hero-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-card p {
-            color: rgba(255,255,255,0.8);
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background: #f8f9fa;
+            background-color: #f8f9fa;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
-        .section-title {
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
             text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* Agency Info */
+        .agency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
-        .section-title p {
-            font-size: 1.2rem;
-            color: #666;
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Course Coordinator */
+        .coordinator-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .coordinator-img {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-icon i {
-            font-size: 2rem;
+            font-size: 3rem;
             color: white;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
+        /* Digital Marketing Course */
+        .course-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .service-card p {
-            color: #666;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Courses Section */
-        .courses {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .courses h2, .courses p {
-            color: white;
-        }
-
-        .courses-grid {
+        .course-overview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .course-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .course-header {
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
+        .overview-item {
             text-align: center;
-        }
-
-        .course-price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .course-title {
-            font-size: 1.3rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .course-duration {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .course-body {
             padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
 
-        .course-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .course-features li {
-            color: white;
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .course-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #4ade80;
-            font-weight: bold;
-        }
-
-        .course-btn {
-            width: 100%;
-            background: white;
-            color: #f5576c;
-            padding: 1rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .course-btn:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 0;
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
+        .overview-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .about-text p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        /* Table of Contents */
+        .toc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .stats {
+        .toc-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .toc-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .toc-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .toc-table tr:hover {
+            background: #e3f2fd;
+        }
+
+        /* Class Details */
+        .class-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 15px;
+        .class-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
+        .class-card h4 {
             color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .about-visual {
-            position: relative;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-right: 1rem;
-            width: 30px;
-        }
-
-        .contact-form {
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
             margin-bottom: 0.5rem;
-            color: #ccc;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.6);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
 
         /* Footer */
-        .footer {
-            background: #000;
+        footer {
+            background: #2c3e50;
             color: white;
             text-align: center;
             padding: 2rem 0;
+            margin-top: 4rem;
         }
 
-        .footer p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        /* Mobile Responsiveness */
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
+            .header-content {
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .agency-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Navigation styling */
+        .nav-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        /* Loading animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .nav-button:hover {
+            color: #ffd700;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">DigitalPro Academy</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#contact" class="cta-btn">Get Started</a>
-        </nav>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Thiki Tech Academy</div>
+                <nav>
+                    <ul>
+                        <li><button class="nav-button" onclick="showSection('home')">Home</button></li>
+                        <li><button class="nav-button" onclick="showSection('agency')">Agency</button></li>
+                        <li><button class="nav-button" onclick="showSection('courses')">Courses</button></li>
+                        <li><button class="nav-button" onclick="showSection('coordinator')">Coordinator</button></li>
+                        <li><button class="nav-button" onclick="showSection('digital-marketing')">Digital Marketing</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Master Digital Marketing Excellence</h1>
-                <p>Transform your business with cutting-edge digital marketing strategies. Learn from industry experts and grow your online presence with our comprehensive courses and services.</p>
-                <div class="hero-buttons">
-                    <a href="#courses" class="btn-primary">Explore Courses</a>
-                    <a href="#services" class="btn-secondary">Our Services</a>
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <h1>Master Digital Marketing</h1>
+                    <p>Transform your career with comprehensive digital marketing education from industry experts</p>
+                    <a href="#" class="cta-button" onclick="showSection('courses')">Explore Courses</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>500+ Success Stories</h3>
-                    <p>Join thousands of students who've transformed their careers with our proven digital marketing methods.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Our Digital Marketing Services</h2>
-                <p>Comprehensive solutions to elevate your brand's digital presence and drive measurable results</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fab fa-google"></i>
+            <div class="container">
+                <div class="agency-grid">
+                    <div class="info-card">
+                        <h3>🎯 Expert Training</h3>
+                        <p>Learn from industry professionals with years of hands-on experience in digital marketing campaigns and strategy development.</p>
                     </div>
-                    <h3>SEO & SEM</h3>
-                    <p>Boost your search engine rankings and drive targeted traffic with our advanced SEO and paid search strategies.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fab fa-facebook"></i>
+                    <div class="info-card">
+                        <h3>📈 Practical Skills</h3>
+                        <p>Gain real-world experience through live projects, case studies, and hands-on workshops that prepare you for the job market.</p>
                     </div>
-                    <h3>Social Media Marketing</h3>
-                    <p>Build engaging communities and convert followers into customers across all major social platforms.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-envelope"></i>
+                    <div class="info-card">
+                        <h3>🏆 Certification</h3>
+                        <p>Earn industry-recognized certifications that validate your skills and enhance your professional credibility.</p>
                     </div>
-                    <h3>Email Marketing</h3>
-                    <p>Create personalized email campaigns that nurture leads and drive conversions with high ROI.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Content Marketing</h3>
-                    <p>Develop compelling content strategies that attract, engage, and convert your target audience.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Analytics & Insights</h3>
-                    <p>Make data-driven decisions with comprehensive analytics and performance tracking solutions.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Marketing</h3>
-                    <p>Reach customers on-the-go with optimized mobile campaigns and app marketing strategies.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Professional Courses</h2>
-                <p>Industry-leading certification programs designed to accelerate your digital marketing career</p>
-            </div>
-            <div class="courses-grid">
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <div class="course-price">$299</div>
-                        <div class="course-title">Digital Marketing Fundamentals</div>
-                        <div class="course-duration">6 Weeks • Beginner</div>
+        <!-- Agency Section -->
+        <section id="agency" class="section">
+            <div class="container">
+                <h2>About Thiki Tech Academy</h2>
+                <div class="agency-grid">
+                    <div class="info-card">
+                        <h3>🏢 Our Mission</h3>
+                        <p>To empower individuals and businesses with cutting-edge digital marketing knowledge and skills that drive real results in today's competitive landscape.</p>
                     </div>
-                    <div class="course-body">
-                        <ul class="course-features">
-                            <li>Complete digital marketing overview</li>
-                            <li>SEO basics and keyword research</li>
-                            <li>Social media marketing essentials</li>
-                            <li>Email marketing fundamentals</li>
-                            <li>Analytics and reporting basics</li>
-                            <li>Industry certification</li>
-                        </ul>
-                        <button class="course-btn">Enroll Now</button>
+                    <div class="info-card">
+                        <h3>💼 Our Services</h3>
+                        <p>Comprehensive digital marketing training, consultation services, campaign management, and ongoing support for businesses of all sizes.</p>
                     </div>
-                </div>
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <div class="course-price">$599</div>
-                        <div class="course-title">Advanced SEO Mastery</div>
-                        <div class="course-duration">8 Weeks • Intermediate</div>
+                    <div class="info-card">
+                        <h3>🌟 Our Experience</h3>
+                        <p>Over 5 years of experience in digital marketing education, with 500+ successful graduates now working in leading companies.</p>
                     </div>
-                    <div class="course-body">
-                        <ul class="course-features">
-                            <li>Technical SEO optimization</li>
-                            <li>Advanced keyword strategies</li>
-                            <li>Link building techniques</li>
-                            <li>Local SEO mastery</li>
-                            <li>SEO tools and analytics</li>
-                            <li>Professional certification</li>
-                        </ul>
-                        <button class="course-btn">Enroll Now</button>
+                    <div class="info-card">
+                        <h3>🎓 Training Approach</h3>
+                        <p>Blend of theoretical knowledge and practical application, ensuring students are job-ready upon course completion.</p>
                     </div>
-                </div>
-                <div class="course-card fade-in">
-                    <div class="course-header">
-                        <div class="course-price">$899</div>
-                        <div class="course-title">Complete Digital Strategy</div>
-                        <div class="course-duration">12 Weeks • Advanced</div>
+                    <div class="info-card">
+                        <h3>🤝 Industry Partnerships</h3>
+                        <p>Strong connections with leading digital marketing agencies and tech companies for internship and job placement opportunities.</p>
                     </div>
-                    <div class="course-body">
-                        <ul class="course-features">
-                            <li>Comprehensive marketing strategy</li>
-                            <li>Advanced analytics and insights</li>
-                            <li>Conversion optimization</li>
-                            <li>Marketing automation</li>
-                            <li>Leadership and team management</li>
-                            <li>Executive certification</li>
-                        </ul>
-                        <button class="course-btn">Enroll Now</button>
+                    <div class="info-card">
+                        <h3>📍 Location & Online</h3>
+                        <p>Based in tech hub with both in-person and online training options to accommodate different learning preferences.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h2>Why Choose DigitalPro Academy?</h2>
-                    <p>With over a decade of experience in digital marketing, we've helped thousands of businesses and professionals achieve unprecedented growth in the digital landscape.</p>
-                    <p>Our expert-led programs combine theoretical knowledge with hands-on practical experience, ensuring you're job-ready from day one.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10,000+</span>
-                            <span class="stat-label">Students Trained</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Companies Served</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Job Placement Rate</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4.9★</span>
-                            <span class="stat-label">Average Rating</span>
-                        </div>
+        <!-- Courses Section -->
+        <section id="courses" class="section">
+            <div class="container">
+                <h2>Our Courses</h2>
+                <div class="agency-grid">
+                    <div class="info-card">
+                        <h3>📱 Digital Marketing Fundamentals</h3>
+                        <p><strong>Duration:</strong> 3 months<br>
+                        <strong>Level:</strong> Beginner to Intermediate<br>
+                        <strong>Format:</strong> Online & Offline<br>
+                        Complete introduction to digital marketing strategies, tools, and best practices.</p>
                     </div>
-                </div>
-                <div class="about-visual fade-in">
-                    <div class="about-image">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div class="info-card">
+                        <h3>🔍 SEO & Content Marketing</h3>
+                        <p><strong>Duration:</strong> 2 months<br>
+                        <strong>Level:</strong> Intermediate<br>
+                        <strong>Format:</strong> Online<br>
+                        Master search engine optimization and create compelling content that ranks.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📊 Social Media Marketing</h3>
+                        <p><strong>Duration:</strong> 6 weeks<br>
+                        <strong>Level:</strong> All Levels<br>
+                        <strong>Format:</strong> Hybrid<br>
+                        Build engaging social media strategies across all major platforms.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💰 PPC & Paid Advertising</h3>
+                        <p><strong>Duration:</strong> 4 weeks<br>
+                        <strong>Level:</strong> Intermediate<br>
+                        <strong>Format:</strong> Online<br>
+                        Master Google Ads, Facebook Ads, and other paid advertising platforms.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📧 Email Marketing</h3>
+                        <p><strong>Duration:</strong> 3 weeks<br>
+                        <strong>Level:</strong> Beginner<br>
+                        <strong>Format:</strong> Online<br>
+                        Create effective email campaigns that convert prospects to customers.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📈 Analytics & Data</h3>
+                        <p><strong>Duration:</strong> 4 weeks<br>
+                        <strong>Level:</strong> Intermediate<br>
+                        <strong>Format:</strong> Online<br>
+                        Learn to analyze data and make data-driven marketing decisions.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Get In Touch</h2>
-                <p>Ready to transform your digital marketing journey? Let's discuss your goals and create a customized learning path.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p>123 Marketing Street<br>Digital City, DC 12345</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p>info@digitalproacademy.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat - Sun: 10:00 AM - 4:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your goals and how we can help you"></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+        <!-- Coordinator Section -->
+        <section id="coordinator" class="section">
+            <div class="container">
+                <h2>Course Coordinator</h2>
+                <div class="coordinator-card">
+                    <div class="coordinator-img">VG</div>
+                    <h3>Vignesh</h3>
+                    <p><strong>Senior Digital Marketing Strategist</strong></p>
+                    <p><strong>Email:</strong> vignesh@thikitechacademy.com</p>
+                    <p><strong>Experience:</strong> 8+ years in digital marketing</p>
+                    <br>
+                    <p>Vignesh brings extensive experience in digital marketing strategy, having worked with Fortune 500 companies and startups alike. He specializes in integrated marketing campaigns, conversion optimization, and marketing automation.</p>
+                    <br>
+                    <p><strong>Expertise:</strong> SEO, PPC, Social Media Marketing, Content Strategy, Marketing Analytics, Lead Generation</p>
+                    <br>
+                    <p><strong>Certifications:</strong> Google Ads Certified, Facebook Blueprint Certified, HubSpot Certified, Google Analytics Certified</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 DigitalPro Academy. All rights reserved. Empowering digital marketing excellence worldwide.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+        <!-- Digital Marketing Course Detail -->
+        <section id="digital-marketing" class="section">
+            <div class="container">
+                <h2>Digital Marketing Course Details</h2>
+                
+                <div class="course-content">
+                    <div class="course-overview">
+                        <div class="overview-item">
+                            <div class="overview-icon">⏱️</div>
+                            <h3>Duration</h3>
+                            <p>12 Weeks Intensive Program</p>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-icon">👥</div>
+                            <h3>Class Size</h3>
+                            <p>Maximum 15 Students</p>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-icon">📅</div>
+                            <h3>Schedule</h3>
+                            <p>Mon, Wed, Fri - 7:00 PM to 9:00 PM</p>
+                        </div>
+                        <div class="overview-item">
+                            <div class="overview-icon">💻</div>
+                            <h3>Format</h3>
+                            <p>Hybrid (Online + Offline)</p>
+                        </div>
+                    </div>
+
+                    <h3>Course Curriculum - Table of Contents</h3>
+                    <table class="toc-table">
+                        <thead>
+                            <tr>
+                                <th>Week</th>
+                                <th>Module</th>
+                                <th>Topics Covered</th>
+                                <th>Practical Assignment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1-2</td>
+                                <td>Digital Marketing Fundamentals</td>
+                                <td>Introduction to Digital Marketing, Customer Journey, Digital Channels Overview</td>
+                                <td>Create a Digital Marketing Strategy</td>
+                            </tr>
+                            <tr>
+                                <td>3-4</td>
+                                <td>Search Engine Optimization (SEO)</td>
+                                <td>On-page SEO, Off-page SEO, Technical SEO, Keyword Research</td>
+                                <td>Optimize a Website for Search Engines</td>
+                            </tr>
+                            <tr>
+                                <td>5-6</td>
+                                <td>Search Engine Marketing (SEM)</td>
+                                <td>Google Ads, Keyword Bidding, Ad Copy Creation, Campaign Management</td>
+                                <td>Create and Manage Google Ads Campaign</td>
+                            </tr>
+                            <tr>
+                                <td>7-8</td>
+                                <td>Social Media Marketing</td>
+                                <td>Facebook, Instagram, LinkedIn, Twitter Marketing, Content Creation</td>
+                                <td>Develop Social Media Campaign</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Email Marketing</td>
+                                <td>Email Campaigns, Automation, Segmentation, A/B Testing</td>
+                                <td>Create Email Marketing Campaign</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Content Marketing</td>
+                                <td>Content Strategy, Blog Writing, Video Marketing, Content Distribution</td>
+                                <td>Develop Content Marketing Plan</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Analytics & Reporting</td>
+                                <td>Google Analytics, Social Media Analytics, ROI Measurement</td>
+                                <td>Create Marketing Dashboard</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Advanced Strategies & Project</td>
+                                <td>Marketing Automation, Advanced Analytics, Final Project Presentation</td>
+                                <td>Complete Marketing Campaign Project</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Class Details</h3>
+                    <div class="class-grid">
+                        <div class="class-card">
+                            <h4>🎯 Learning Objectives</h4>
+                            <ul>
+                                <li>Master all major digital marketing channels</li>
+                                <li>Create data-driven marketing strategies</li>
+                                <li>Understand customer acquisition and retention</li>
+                                <li>Build practical campaign management skills</li>
+                            </ul>
+                        </div>
+                        <div class="class-card">
+                            <h4>📚 Course Materials</h4>
+                            <ul>
+                                <li>Comprehensive course handbook</li>
+                                <li>Access to premium marketing tools</li>
+                                <li>Video tutorials and resources</li>
+                                <li>Industry case studies</li>
+                            </ul>
+                        </div>
+                        <div class="class-card">
+                            <h4>🏆 Certification</h4>
+                            <ul>
+                                <li>Thiki Tech Academy Certificate</li>
+                                <li>Google Analytics Certification prep</li>
+                                <li>Google Ads Certification prep</li>
+                                <li>Portfolio of completed projects</li>
+                            </ul>
+                        </div>
+                        <div class="class-card">
+                            <h4>💼 Career Support</h4>
+                            <ul>
+                                <li>Resume building assistance</li>
+                                <li>Job placement support</li>
+                                <li>Industry networking opportunities</li>
+                                <li>Interview preparation sessions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="#" class="cta-button">Enroll Now - Contact Coordinator</a>
+                    </div>
+                </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Thiki Tech Academy. All rights reserved.</p>
+            <p>Contact: info@thikitechacademy.com | Phone: +1 (555) 123-4567</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-
-        // Form submission
-        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We\'ll get back to you soon.');
-            this.reset();
-        });
-
-        // Course enrollment
-        document.querySelectorAll('.course-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const courseTitle = this.closest('.course-card').querySelector('.course-title').textContent;
-                alert(`Thank you for your interest in "${courseTitle}"! Our enrollment team will contact you shortly.`);
-            });
-        });
-
-        // Add some interactive hover effects
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
             });
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize with home section
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
         });
-
-        // Animate stats on scroll
-        const animateStats = () => {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const finalNumber = parseInt(stat.textContent.replace(/[^\d]/g, ''));
-                let currentNumber = 0;
-                const increment = finalNumber / 50;
-                const timer = setInterval(() => {
-                    currentNumber += increment;
-                    if (currentNumber >= finalNumber) {
-                        currentNumber = finalNumber;
-                        clearInterval(timer);
-                    }
-                    const suffix = stat.textContent.includes('%') ? '%' : 
-                                 stat.textContent.includes('★') ? '★' : 
-                                 stat.textContent.includes('+') ? '+' : '';
-                    stat.textContent = Math.floor(currentNumber) + suffix;
-                }, 50);
-            });
-        };
-
-        // Trigger stats animation when about section is visible
-        const aboutSection = document.querySelector('.about');
-        const aboutObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    aboutObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        aboutObserver.observe(aboutSection);
     </script>
 </body>
 </html>
