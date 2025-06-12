@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Registration - Transform Your Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: slideDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Registration Form */
+        .registration-form {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            animation: scaleIn 0.8s ease-out 0.6s both;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-label {
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            color: #a0aec0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        .form-input:focus + .form-label,
+        .form-input:not(:placeholder-shown) + .form-label {
+            top: -10px;
+            left: 15px;
+            font-size: 12px;
+            color: #667eea;
+            background: white;
+            padding: 0 5px;
+        }
+
+        select.form-input {
+            cursor: pointer;
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        /* Star Rating */
+        .rating-group {
+            margin-bottom: 25px;
+        }
+
+        .rating-label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 16px;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            font-size: 24px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .star.active {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer with Admin Login */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+        }
+
+        .admin-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-trigger:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            min-width: 400px;
+            animation: slideInScale 0.3s ease;
+        }
+
+        @keyframes slideInScale {
+            from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #2d3748;
+        }
+
+        /* Record Details Modal */
+        .record-details-modal .modal-content {
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .record-details {
+            margin-top: 20px;
+        }
+
+        .detail-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            color: #4a5568;
+            font-size: 16px;
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .detail-value.long-text {
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .rating-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .rating-item {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .rating-item-label {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .rating-stars {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .rating-score {
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c53030;
+            transform: translateY(-1px);
+        }
+
+        .registrations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .registrations-table thead,
+        .registrations-table tbody {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .registrations-table th,
+        .registrations-table td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .registrations-table th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+            position: sticky;
+            top: 0;
+            font-size: 14px;
+        }
+
+        .registrations-table tr:hover {
+            background: #f7fafc;
+            cursor: pointer;
+        }
+
+        .registrations-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .registrations-table tbody tr:hover {
+            background: #edf2f7;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .rating-display {
+            color: #ffd700;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+
+        .message.error {
+            background: #fed7d7;
+            color: #822727;
+            border: 1px solid #feb2b2;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .registration-form,
+            .admin-panel {
+                padding: 25px;
+                margin: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20px;
+                min-width: auto;
+                width: calc(100% - 40px);
+            }
+            
+            .record-details-modal .modal-content {
+                width: calc(100% - 20px);
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .registrations-table {
+                font-size: 12px;
+            }
+            
+            .registrations-table th,
+            .registrations-table td {
+                padding: 8px 4px;
+            }
+
+            .rating-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚀 Transform Your Skills</h1>
+            <p>Join our exclusive workshop and unlock your potential</p>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="registration-form" id="registrationForm">
+            <h2 class="form-title">Register Now</h2>
+            
+            <div id="message" class="message"></div>
+            
+            <form id="workshopForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="text" id="firstName" class="form-input" placeholder=" " required>
+                        <label for="firstName" class="form-label">First Name</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="lastName" class="form-input" placeholder=" " required>
+                        <label for="lastName" class="form-label">Last Name</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-input" placeholder=" " required>
+                        <label for="email" class="form-label">Email Address</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="phone" class="form-input" placeholder=" " required>
+                        <label for="phone" class="form-label">Phone Number</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="profession" class="form-input" placeholder=" " required>
+                        <label for="profession" class="form-label">Profession</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="company" class="form-input" placeholder=" ">
+                        <label for="company" class="form-label">Company/Organization</label>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <textarea id="interests" class="form-input" placeholder=" " required></textarea>
+                        <label for="interests" class="form-label">Why are you interested in this course?</label>
+                    </div>
+                </div>
+                
+                <!-- Rating Sections -->
+                <div class="rating-group">
+                    <label class="rating-label">Is this workshop useful?</label>
+                    <div class="star-rating" data-rating="usefulness">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+
+                <div class="rating-group">
+                    <label class="rating-label">How is the engagement?</label>
+                    <div class="star-rating" data-rating="engagement">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+
+                <div class="rating-group">
+                    <label class="rating-label">Course coordinator explanation - Is it okay to understand?</label>
+                    <div class="star-rating" data-rating="explanation">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Register for Workshop
+                </button>
+            </form>
+        </div>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <div class="admin-panel" id="adminPanel">
+            <div class="admin-header">
+                <h2>Admin Dashboard</h2>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRegistrations">0</div>
+                    <div class="stat-label">Total Registrations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayRegistrations">0</div>
+                    <div class="stat-label">Today's Registrations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgRating">0.0</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="registrations-table" id="registrationsTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;">Name</th>
+                            <th style="width: 18%;">Email</th>
+                            <th style="width: 10%;">Phone</th>
+                            <th style="width: 12%;">Profession</th>
+                            <th style="width: 12%;">Company</th>
+                            <th style="width: 20%;">Interest Reason</th>
+                            <th style="width: 8%;">Useful</th>
+                            <th style="width: 8%;">Engage</th>
+                            <th style="width: 8%;">Explain</th>
+                            <th style="width: 10%;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registrationsBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer with Admin Login -->
+        <div class="footer">
+            <a href="#" class="admin-trigger" onclick="showAdminLogin()">
+                🔐 Admin Login
+            </a>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Admin Login</h3>
+                <button class="close-btn" onclick="closeAdminModal()">&times;</button>
+            </div>
+            
+            <div id="loginMessage" class="message"></div>
+            
+            <form id="adminLoginForm">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <input type="email" id="adminEmail" class="form-input" placeholder=" " required>
+                    <label for="adminEmail" class="form-label">Admin Email</label>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <input type="password" id="adminPassword" class="form-input" placeholder=" " required>
+                    <label for="adminPassword" class="form-label">Admin Password</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Record Details Modal -->
+    <div class="modal record-details-modal" id="recordDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Registration Details</h3>
+                <button class="close-btn" onclick="closeRecordDetails()">&times;</button>
+            </div>
+            
+            <div class="record-details" id="recordDetailsContent">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-firestore-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-auth-compat.min.js"></script>
+
+    <script>
+        // Firebase Configuration - Replace with your config
+        const firebaseConfig = {
+          apiKey: "AIzaSyDzdfP1QpXlecw-mk38G6E7Vkb-pfJr540",
+          authDomain: "web-development-project-site.firebaseapp.com",
+          databaseURL: "https://web-development-project-site-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "web-development-project-site",
+          storageBucket: "web-development-project-site.appspot.com",
+          messagingSenderId: "465762016992",
+          appId: "1:465762016992:web:7f0359063796db2a2d7a85",
+          measurementId: "G-2CF5T9461F"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // Rating system
+        const ratings = {
+            usefulness: 0,
+            engagement: 0,
+            explanation: 0
+        };
+
+        // Store registrations data for popup display
+        let registrationsData = [];
+
+        // Initialize particles animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 2;
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 6;
+                const animationDuration = Math.random() * 3 + 3;
+                
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${left}%;
+                    top: ${Math.random() * 100}%;
+                    animation-delay: ${animationDelay}s;
+                    animation-duration: ${animationDuration}s;
+                `;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Star rating functionality
+        function initStarRatings() {
+            const starRatings = document.querySelectorAll('.star-rating');
+            
+            starRatings.forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                const ratingType = rating.dataset.rating;
+                
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', () => {
+                        const value = parseInt(star.dataset.value);
+                        ratings[ratingType] = value;
+                        
+                        // Update visual feedback
+                        stars.forEach((s, i) => {
+                            if (i < value) {
+                                s.classList.add('active');
+                            } else {
+                                s.classList.remove('active');
+                            }
+                        });
+                    });
+                    
+                    star.addEventListener('mouseover', () => {
+                        const value = parseInt(star.dataset.value);
+                        stars.forEach((s, i) => {
+                            if (i < value) {
+                                s.style.color = '#ffd700';
+                            } else {
+                                s.style.color = '#e2e8f0';
+                            }
+                        });
+                    });
+                });
+                
+                rating.addEventListener('mouseleave', () => {
+                    const currentRating = ratings[ratingType];
+                    stars.forEach((s, i) => {
+                        if (i < currentRating) {
+                            s.style.color = '#ffd700';
+                        } else {
+                            s.style.color = '#e2e8f0';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Show message
+        function showMessage(text, type, elementId = 'message') {
+            const messageEl = document.getElementById(elementId);
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        // Workshop registration form
+        document.getElementById('workshopForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate ratings
+            if (ratings.usefulness === 0 || ratings.engagement === 0 || ratings.explanation === 0) {
+                showMessage('Please provide all ratings before submitting.', 'error');
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading"></span> Registering...';
+            
+            try {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    profession: document.getElementById('profession').value,
+                    company: document.getElementById('company').value,
+                    interests: document.getElementById('interests').value,
+                    ratings: {
+                        usefulness: ratings.usefulness,
+                        engagement: ratings.engagement,
+                        explanation: ratings.explanation
+                    },
+                    registrationDate: new Date().toISOString(),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                await db.collection('Digital_Course_Enroll').add(formData);
+                
+                showMessage('Registration successful! Thank you for your feedback.', 'success');
+                document.getElementById('workshopForm').reset();
+                
+                // Reset ratings
+                ratings.usefulness = 0;
+                ratings.engagement = 0;
+                ratings.explanation = 0;
+                
+                // Reset star displays
+                document.querySelectorAll('.star').forEach(star => {
+                    star.classList.remove('active');
+                    star.style.color = '#e2e8f0';
+                });
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                showMessage('Registration failed. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+
+        // Admin login
+        function showAdminLogin() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+            document.getElementById('adminLoginForm').reset();
+            document.getElementById('loginMessage').style.display = 'none';
+        }
+
+        document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                closeAdminModal();
+                showAdminPanel();
+                loadRegistrations();
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('Invalid credentials. Please try again.', 'error', 'loginMessage');
+            }
+        });
+
+        function showAdminPanel() {
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function logout() {
+            auth.signOut().then(() => {
+                document.getElementById('registrationForm').style.display = 'block';
+                document.getElementById('adminPanel').style.display = 'none';
+            });
+        }
+
+        // Check authentication state
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                showAdminPanel();
+                loadRegistrations();
+            }
+        });
+
+        // Load and display registrations
+        async function loadRegistrations() {
+            try {
+                const snapshot = await db.collection('Digital_Course_Enroll')
+                    .orderBy('timestamp', 'desc')
+                    .get();
+                
+                const registrations = [];
+                const today = new Date().toDateString();
+                let todayCount = 0;
+                let totalRatings = 0;
+                let ratingCount = 0;
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    registrations.push({ id: doc.id, ...data });
+                    
+                    const regDate = new Date(data.registrationDate).toDateString();
+                    if (regDate === today) {
+                        todayCount++;
+                    }
+                    
+                    // Calculate average ratings
+                    if (data.ratings) {
+                        totalRatings += (data.ratings.usefulness + data.ratings.engagement + data.ratings.explanation);
+                        ratingCount += 3;
+                    }
+                });
+
+                const avgRating = ratingCount > 0 ? (totalRatings / ratingCount).toFixed(1) : 0;
+                updateStats(registrations.length, todayCount, avgRating);
+                displayRegistrations(registrations);
+                
+            } catch (error) {
+                console.error('Error loading registrations:', error);
+                showMessage('Error loading registrations.', 'error');
+            }
+        }
+
+        function updateStats(total, today, avgRating) {
+            document.getElementById('totalRegistrations').textContent = total;
+            document.getElementById('todayRegistrations').textContent = today;
+            document.getElementById('avgRating').textContent = avgRating;
+        }
+
+        function displayRegistrations(registrations) {
+            const tbody = document.getElementById('registrationsBody');
+            tbody.innerHTML = '';
+
+            registrations.forEach(reg => {
+                const row = document.createElement('tr');
+                const regDate = new Date(reg.registrationDate).toLocaleDateString();
+                
+                const usefulnessStars = '★'.repeat(reg.ratings?.usefulness || 0) + '☆'.repeat(5 - (reg.ratings?.usefulness || 0));
+                const engagementStars = '★'.repeat(reg.ratings?.engagement || 0) + '☆'.repeat(5 - (reg.ratings?.engagement || 0));
+                const explanationStars = '★'.repeat(reg.ratings?.explanation || 0) + '☆'.repeat(5 - (reg.ratings?.explanation || 0));
+                
+                row.innerHTML = `
+                    <td title="${reg.firstName} ${reg.lastName}">${reg.firstName} ${reg.lastName}</td>
+                    <td title="${reg.email}">${reg.email}</td>
+                    <td title="${reg.phone}">${reg.phone}</td>
+                    <td title="${reg.profession}" style="text-transform: capitalize;">${reg.profession}</td>
+                    <td title="${reg.company || '-'}">${reg.company || '-'}</td>
+                    <td title="${reg.interests}" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">${reg.interests}</td>
+                    <td class="rating-display" title="Usefulness: ${reg.ratings?.usefulness || 0}/5">${usefulnessStars}</td>
+                    <td class="rating-display" title="Engagement: ${reg.ratings?.engagement || 0}/5">${engagementStars}</td>
+                    <td class="rating-display" title="Explanation: ${reg.ratings?.explanation || 0}/5">${explanationStars}</td>
+                    <td title="${regDate}">${regDate}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('adminModal');
+            if (e.target === modal) {
+                closeAdminModal();
+            }
+        });
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initStarRatings();
+        });
+
+        // Auto-refresh registrations every 30 seconds when admin panel is open
+        setInterval(() => {
+            if (auth.currentUser && document.getElementById('adminPanel').style.display === 'block') {
+                loadRegistrations();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
